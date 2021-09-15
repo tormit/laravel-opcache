@@ -11,7 +11,7 @@ class CompileTest extends TestCase
     public function optimizes()
     {
         Http::fake([
-            '*' => $this->makeLocalRequest('compile'),
+            '*' => $this->makeLocalRequest('compile', ['force' => true]),
         ]);
 
         Artisan::call('opcache:compile --force', []);

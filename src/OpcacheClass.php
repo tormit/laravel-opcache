@@ -52,7 +52,7 @@ class OpcacheClass
      *
      * @return array|null
      */
-    public function compile(bool $force): ?array
+    public function compile(bool $force = false): ?array
     {
         if (!ini_get('opcache.dups_fix') && !$force) {
             return ['message' => 'opcache.dups_fix must be enabled, or run with --force'];

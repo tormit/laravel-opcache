@@ -31,7 +31,7 @@ jobs:
                   php-version: ${{ matrix.php }}
                   extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick, opcache
                   coverage: none
-                  ini-values: post_max_size=8M, short_open_tag=Off, opcache.enable=On, opcache.enable_cli=On
+                  ini-values: post_max_size=8M, short_open_tag=Off, opcache.enable=On, opcache.enable_cli=On, opcache.dups_fix=On
 
             - name: Get Composer Cache Directory
               id: composer-cache
