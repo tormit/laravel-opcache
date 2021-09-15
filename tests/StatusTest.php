@@ -3,18 +3,23 @@
 namespace Appstract\Opcache\Test;
 
 use Artisan;
+use Illuminate\Support\Facades\Http;
 
 class StatusTest extends TestCase
 {
     /** @test */
     public function shows_status()
     {
+        Http::fake([
+            '*' => $this->makeLocalRequest('status'),
+        ]);
+
         Artisan::call('opcache:status', []);
 
         $output = Artisan::output();
 
-        $this->assertContains('Memory usage:', $output);
-        $this->assertContains('Interned strings usage:', $output);
-        $this->assertContains('Statistics:', $output);
+        $this->assertStringContainsString('Memory usage:', $output);
+        $this->assertStringContainsString('Interned strings usage:', $output);
+        $this->assertStringContainsString('Statistics:', $output);
     }
 }

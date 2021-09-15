@@ -3,17 +3,22 @@
 namespace Appstract\Opcache\Test;
 
 use Artisan;
+use Illuminate\Support\Facades\Http;
 
 class ConfigTest extends TestCase
 {
     /** @test */
     public function shows_config()
     {
+        Http::fake([
+            '*' => $this->makeLocalRequest('config'),
+        ]);
+
         Artisan::call('opcache:config', []);
 
         $output = Artisan::output();
 
-        $this->assertContains('Version info', $output);
-        $this->assertContains('Configuration info', $output);
+        $this->assertStringContainsString('Version info', $output);
+        $this->assertStringContainsString('Configuration info', $output);
     }
 }
