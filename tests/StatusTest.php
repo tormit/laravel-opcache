@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Http;
 class StatusTest extends TestCase
 {
     /** @test */
-    public function shows_status()
+    public function shows_status(): void
     {
         Http::fake([
             '*' => $this->makeLocalRequest('status'),

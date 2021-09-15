@@ -16,6 +16,7 @@ abstract class TestCase extends Orchestra
         $app['config']->set('app.url', 'http://laravel7.test/');
         $app['config']->set('opcache.url', 'http://laravel7.test/');
         $app['config']->set('app.key', 'base64:Ed0VpanUWokW8AgY8jRCU8A5Cn3ou+uby8qLCQysUpg=');
+        $app['config']->set('opcache.directories', __DIR__ . '/Stubs/');
     }
 
     /**

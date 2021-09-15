@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Http;
 class ConfigTest extends TestCase
 {
     /** @test */
-    public function shows_config()
+    public function shows_config(): void
     {
         Http::fake([
             '*' => $this->makeLocalRequest('config'),
