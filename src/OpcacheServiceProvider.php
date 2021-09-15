@@ -20,7 +20,7 @@ class OpcacheServiceProvider extends ServiceProvider
             ]);
 
             $this->publishes([
-                __DIR__.'/../config/opcache.php' => config_path('opcache.php'),
+                __DIR__ . '/../config/opcache.php' => config_path('opcache.php'),
             ], 'config');
         }
     }
@@ -31,7 +31,7 @@ class OpcacheServiceProvider extends ServiceProvider
     public function register()
     {
         // config
-        $this->mergeConfigFrom(__DIR__.'/../config/opcache.php', 'opcache');
+        $this->mergeConfigFrom(__DIR__ . '/../config/opcache.php', 'opcache');
 
         // bind routes
         $this->app->router->group([
@@ -39,7 +39,7 @@ class OpcacheServiceProvider extends ServiceProvider
             'prefix'        => config('opcache.prefix'),
             'namespace'     => 'Appstract\Opcache\Http\Controllers',
         ], function ($router) {
-            require __DIR__.'/Http/routes.php';
+            require __DIR__ . '/Http/routes.php';
         });
     }
 }

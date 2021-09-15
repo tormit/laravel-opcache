@@ -36,7 +36,7 @@ class Config extends Command
             $this->line('Version info:');
             $this->table([], $this->parseTable($response['result']['version']));
 
-            $this->line(PHP_EOL.'Configuration info:');
+            $this->line(PHP_EOL . 'Configuration info:');
             $this->table([], $this->parseTable($response['result']['directives']));
         } else {
             $this->error('OPcache not configured');
@@ -54,13 +54,13 @@ class Config extends Command
      */
     protected function parseTable($input)
     {
-        $input = (array) $input;
+        $input = (array)$input;
 
         return array_map(function ($key, $value) {
             $bytes = ['opcache.memory_consumption'];
 
             if (in_array($key, $bytes)) {
-                $value = number_format($value / 1048576, 2).' MB';
+                $value = number_format($value / 1048576, 2) . ' MB';
             } elseif (is_bool($value)) {
                 $value = $value ? 'true' : 'false';
             }
