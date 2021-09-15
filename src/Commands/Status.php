@@ -31,7 +31,6 @@ class Status extends Command
     public function handle()
     {
         $response = $this->sendRequest('status');
-        $response->throw();
 
         if ($response['result']) {
             $this->displayTables($response['result']);

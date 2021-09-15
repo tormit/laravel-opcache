@@ -31,7 +31,6 @@ class Config extends Command
     public function handle()
     {
         $response = $this->sendRequest('config');
-        $response->throw();
 
         if ($response['result']) {
             $this->line('Version info:');

@@ -31,7 +31,6 @@ class Compile extends Command
         $this->line('Compiling scripts...');
 
         $response = $this->sendRequest('compile', ['force' => $this->option('force') ?? false]);
-        $response->throw();
 
         if (isset($response['result']['message'])) {
             $this->warn($response['result']['message']);

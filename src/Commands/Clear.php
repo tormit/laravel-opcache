@@ -31,7 +31,6 @@ class Clear extends Command
     public function handle()
     {
         $response = $this->sendRequest('clear');
-        $response->throw();
 
         if ($response['result']) {
             $this->info('OPcache cleared');
