@@ -32,7 +32,7 @@ class Config extends Command
     {
         $response = $this->sendRequest('config');
 
-        if ($response['result']) {
+        if ($response->ok() && $response->json()['result']) {
             $this->line('Version info:');
             $this->table([], $this->parseTable($response['result']['version']));
 

@@ -32,7 +32,7 @@ class Status extends Command
     {
         $response = $this->sendRequest('status');
 
-        if ($response['result']) {
+        if ($response->ok() && $response->json()['result']) {
             $this->displayTables($response['result']);
         } else {
             $this->error('OPcache not configured');
