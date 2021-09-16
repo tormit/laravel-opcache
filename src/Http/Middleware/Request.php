@@ -37,7 +37,7 @@ class Request
      *
      * @return bool
      */
-    protected function isAllowed($request)
+    protected function isAllowed($request): bool
     {
         try {
             $decrypted = Crypt::decrypt($request->get('key'));
@@ -45,7 +45,7 @@ class Request
             $decrypted = '';
         }
 
-        return $decrypted == 'opcache' || in_array($this->getRequestIp($request), [$this->getServerIp(), '127.0.0.1', '::1']);
+        return $decrypted === 'opcache' || in_array($this->getRequestIp($request), [$this->getServerIp(), '127.0.0.1', '::1']);
     }
 
     /**
@@ -78,16 +78,12 @@ class Request
      *
      * @return string
      */
-    protected function getServerIp()
+    protected function getServerIp(): string
     {
         if (isset($_SERVER['SERVER_ADDR'])) {
             return $_SERVER['SERVER_ADDR'];
         }
 
-        if (isset($_SERVER['LOCAL_ADDR'])) {
-            return $_SERVER['LOCAL_ADDR'];
-        }
-
-        return '127.0.0.1';
+        return $_SERVER['LOCAL_ADDR'] ?? '127.0.0.1';
     }
 }

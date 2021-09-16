@@ -19,13 +19,14 @@
     ],
     "require": {
         "php": "^7.4|^8.0",
+        "ext-zend-opcache": "*",
         "laravel/framework": "^7.0|^8.0",
         "guzzlehttp/guzzle": "^6.3.1|^7.0"
     },
     "require-dev": {
         "gtjamesa/php-standards": "^1.1",
         "orchestra/testbench": "^5.0|^6.0",
-        "phpunit/phpunit": "^8.5"
+        "phpunit/phpunit": "^8.5|^9.4"
     },
     "autoload": {
         "psr-4": {
@@ -38,7 +39,8 @@
         }
     },
     "scripts": {
-        "test": "vendor/bin/phpunit"
+        "test": "vendor/bin/phpunit",
+        "fix": "vendor/bin/php-cs-fixer fix"
     },
     "config": {
         "sort-packages": true

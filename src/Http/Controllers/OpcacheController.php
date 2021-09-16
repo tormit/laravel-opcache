@@ -16,7 +16,7 @@ class OpcacheController extends BaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function clear()
+    public function clear(): \Illuminate\Http\JsonResponse
     {
         return response()->json(['result' => OPcache::clear()]);
     }
@@ -26,7 +26,7 @@ class OpcacheController extends BaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function config()
+    public function config(): \Illuminate\Http\JsonResponse
     {
         return response()->json(['result' => OPcache::getConfig()]);
     }
@@ -36,7 +36,7 @@ class OpcacheController extends BaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function status()
+    public function status(): \Illuminate\Http\JsonResponse
     {
         return response()->json(['result' => OPcache::getStatus()]);
     }
@@ -47,7 +47,7 @@ class OpcacheController extends BaseController
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function compile(Request $request)
+    public function compile(Request $request): \Illuminate\Http\JsonResponse
     {
         return response()->json(['result' => OPcache::compile($request->get('force'))]);
     }

@@ -52,7 +52,7 @@ class Config extends Command
      *
      * @return array
      */
-    protected function parseTable($input)
+    protected function parseTable($input): array
     {
         $input = (array)$input;
 

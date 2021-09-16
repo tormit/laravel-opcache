@@ -8,8 +8,8 @@ namespace Appstract\Opcache\Test\Stubs;
  */
 class FakeClass
 {
-    protected $a;
-    protected $b;
+    protected string $a;
+    protected string $b;
 
     public function __construct()
     {
@@ -17,7 +17,7 @@ class FakeClass
         $this->b = 'World';
     }
 
-    public function greet()
+    public function greet(): string
     {
         return $this->a . ' ' . $this->b;
     }

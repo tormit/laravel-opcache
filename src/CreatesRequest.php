@@ -2,6 +2,7 @@
 
 namespace Appstract\Opcache;
 
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Http;
 
@@ -13,7 +14,7 @@ trait CreatesRequest
      *
      * @return \Illuminate\Http\Client\Response
      */
-    public function sendRequest(string $command, array $parameters = []): \Illuminate\Http\Client\Response
+    public function sendRequest(string $command, array $parameters = []): Response
     {
         return Http::withHeaders(config('opcache.headers'))
             ->withOptions(['verify' => config('opcache.verify')])

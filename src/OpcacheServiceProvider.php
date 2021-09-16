@@ -2,6 +2,7 @@
 
 namespace Appstract\Opcache;
 
+use Appstract\Opcache\Http\Middleware\Request as RequestMiddleware;
 use Illuminate\Support\ServiceProvider;
 
 class OpcacheServiceProvider extends ServiceProvider
@@ -9,7 +10,7 @@ class OpcacheServiceProvider extends ServiceProvider
     /**
      * Bootstrap the application services.
      */
-    public function boot()
+    public function boot(): void
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
@@ -35,7 +36,7 @@ class OpcacheServiceProvider extends ServiceProvider
 
         // bind routes
         $this->app->router->group([
-            'middleware'    => [\Appstract\Opcache\Http\Middleware\Request::class],
+            'middleware'    => [RequestMiddleware::class],
             'prefix'        => config('opcache.prefix'),
             'namespace'     => 'Appstract\Opcache\Http\Controllers',
         ], function ($router) {

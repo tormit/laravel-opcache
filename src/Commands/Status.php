@@ -46,7 +46,7 @@ class Status extends Command
      *
      * @param $data
      */
-    protected function displayTables($data)
+    protected function displayTables($data): void
     {
         $general = $data;
 
@@ -82,7 +82,7 @@ class Status extends Command
      *
      * @return array
      */
-    protected function parseTable($input)
+    protected function parseTable($input): array
     {
         $input = (array)$input;
         $bytes = ['used_memory', 'free_memory', 'wasted_memory', 'buffer_size'];
