@@ -2,8 +2,8 @@
 
 namespace Appstract\Opcache;
 
+use Appstract\Opcache\OpcacheFacade as OPcache;
 use Illuminate\Http\Client\Response;
-use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Http;
 
 trait CreatesRequest
@@ -21,7 +21,7 @@ trait CreatesRequest
             ->withOptions(['verify' => config('opcache.verify')])
             ->get(
                 $this->buildOpcacheUrl($command),
-                array_merge(['key' => Crypt::encrypt('opcache')], $parameters)
+                array_merge(['key' => OPcache::secretKey()], $parameters)
             )
             ->throw();
     }

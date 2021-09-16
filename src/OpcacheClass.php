@@ -3,6 +3,7 @@
 namespace Appstract\Opcache;
 
 use Exception;
+use Illuminate\Support\Facades\Crypt;
 use Symfony\Component\Finder\Finder;
 
 /**
@@ -92,5 +93,15 @@ class OpcacheClass
             'total_files_count' => $files->count(),
             'compiled_count'    => $compiled,
         ];
+    }
+
+    /**
+     * Get the encrypted secret key used to authorise requests.
+     *
+     * @return string
+     */
+    public function secretKey(): string
+    {
+        return Crypt::encrypt('opcache');
     }
 }

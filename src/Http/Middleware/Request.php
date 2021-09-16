@@ -45,7 +45,7 @@ class Request
             $decrypted = '';
         }
 
-        return $decrypted === 'opcache' || in_array($this->getRequestIp($request), [$this->getServerIp(), '127.0.0.1', '::1']);
+        return $decrypted === 'opcache' || in_array($this->getRequestIp($request), [$this->getServerIp(), '127.0.0.1', '::1'], true);
     }
 
     /**

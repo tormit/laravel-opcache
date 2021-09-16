@@ -2,6 +2,7 @@
 
 namespace Appstract\Opcache\Test;
 
+use Appstract\Opcache\OpcacheFacade as OPcache;
 use Appstract\Opcache\OpcacheServiceProvider;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Support\Facades\Http;
@@ -41,7 +42,11 @@ abstract class TestCase extends Orchestra
      */
     protected function makeLocalRequest(string $command, array $parameters = []): PromiseInterface
     {
-        $response = $this->get("/opcache-api/$command?key=eyJpdiI6IjFsTC90eExyNG94clBhSVNROGVjOWc9PSIsInZhbHVlIjoieGRVUldyVGtCTG1jUDJ1VW9sQVhIZz09IiwibWFjIjoiNmEwZTcyOWQ4MzllYjA5ZjU2OTdhYWVjYzFhODkwZGQ0YjI5ZjQxMTgxODVhODM2MGUzNjdlY2FhNTg0YTE3YiJ9&" . http_build_query($parameters));
+        $parameters = array_merge([
+            'key' => OPcache::secretKey(),
+        ], $parameters);
+
+        $response = $this->get("/opcache-api/$command?" . http_build_query($parameters));
 
         return Http::response($response->content(), $response->getStatusCode());
     }
