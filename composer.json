@@ -49,7 +49,10 @@
         "laravel": {
             "providers": [
                 "Appstract\\Opcache\\OpcacheServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "OPcache": "Appstract\\Opcache\\OpcacheFacade"
+            }
         }
     }
 }
