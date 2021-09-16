@@ -13,6 +13,7 @@ trait CreatesRequest
      * @param array  $parameters
      *
      * @return \Illuminate\Http\Client\Response
+     * @throws \Illuminate\Http\Client\RequestException
      */
     public function sendRequest(string $command, array $parameters = []): Response
     {
@@ -21,7 +22,8 @@ trait CreatesRequest
             ->get(
                 $this->buildOpcacheUrl($command),
                 array_merge(['key' => Crypt::encrypt('opcache')], $parameters)
-            );
+            )
+            ->throw();
     }
 
     private function buildOpcacheUrl(string $command): string

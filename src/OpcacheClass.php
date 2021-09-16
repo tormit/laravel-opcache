@@ -36,8 +36,10 @@ class OpcacheClass
 
     /**
      * Get status info.
+     *
+     * @return array|bool|null
      */
-    public function getStatus(): ?array
+    public function getStatus()
     {
         if (function_exists('opcache_get_status')) {
             return opcache_get_status(false);
