@@ -24,7 +24,8 @@
         "guzzlehttp/guzzle": "^6.3.1|^7.0"
     },
     "require-dev": {
-        "gtjamesa/php-standards": "^1.1",
+        "friendsofphp/php-cs-fixer": "^3.1",
+        "gtjamesa/php-standards": "^2.0",
         "orchestra/testbench": "^5.0|^6.0",
         "phpunit/phpunit": "^8.5|^9.4"
     },
