@@ -11,6 +11,14 @@ use Illuminate\Routing\Controller as BaseController;
  */
 class OpcacheController extends BaseController
 {
+    public function __construct()
+    {
+        ini_set('memory_limit', config('opcache.controller.memory_limit', '256M'));
+        set_time_limit(config('opcache.controller.timeout', 60));
+
+        error_reporting(config('opcache.controller.error_reporting', E_ALL & ~E_DEPRECATED & ~E_STRICT));
+    }
+
     /**
      * Clear the OPcache.
      *
