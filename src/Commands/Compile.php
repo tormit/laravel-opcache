@@ -38,7 +38,7 @@ class Compile extends Command
             return 2;
         }
 
-        $json = $response->json()['result'];
+        $json = (array)($response->json()['result'] ?? []);
 
         if (array_key_exists('message', $json)) {
             $this->warn($response['result']['message']);
